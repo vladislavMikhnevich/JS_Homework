@@ -23,7 +23,7 @@ function Cat(name) {
     this.name = name;
     var foodAmount = 50;
 
-    this.setDailyNorm = function(amount) {
+    this.DailyNorm = function(amount) {
 
         if (amount > 500) {
             throw new Error('Нельзя насыпать корма, больше чем 500 гр.');
@@ -32,23 +32,23 @@ function Cat(name) {
         if (amount < 50) {
             throw new Error('Нельзя насыпать корма, меньше чем 50 гр.');
         }
+
         foodAmount = amount;
+
+        if(!arguments.lenght) return foodAmount;
+
     };
 
-    this.getDailyNorm = function() {
-        return foodAmount;
-    };
-
-    function formatFoodAmount() {
+    function getformatFoodAmount() {
         return foodAmount + 'гр.';
     };
 
     this.feed = function() {
-        console.log('Насыпаем в миску ' + formatFoodAmount() + ' корма');
+        console.log('Насыпаем в миску ' + getformatFoodAmount() + ' корма');
     };
 }
 
 var barsik = new Cat('Barsik');
 
-barsik.setDailyNorm(49);
+barsik.DailyNorm(505);
 barsik.feed();
