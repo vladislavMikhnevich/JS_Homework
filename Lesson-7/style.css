@@ -82,10 +82,10 @@ header {
 	text-align: left;
 	display: flex;
 	justify-content: flex-start;
-	margin: 0px auto;
+	margin: 0 auto;
 	list-style-type: none;
 	max-width: 960px;
-	padding: 12px 0px;
+	padding: 0;
 }
 
 .menu-site-navi span {
@@ -93,13 +93,19 @@ header {
 }
 
 .menu-site-navi a:hover {
-	border-top: 5px solid white;
+	background-position: right; 
+	transition: .5s;
+	color: rgb(0,255,255);
+	background-image: linear-gradient(to left, rgb(100,109,129) 0%, rgb(255,255,255) 51%, rgb(100,109,129) 100%); 
+	background-size: 200% auto;
 }
 
 .menu-site-navi a {
 	text-decoration: none;
 	color: white;
-	padding: 7px 0 0;
+	padding: 15px 10px;
+	display: inline-block;
+	
 }
 
 .main {
@@ -123,12 +129,6 @@ header {
 .menu div {
 	
 	list-style-type: none;
-	cursor: pointer;
-}
-
-.menu div a:hover {
-	border-left: solid rgb(128,128,128) 5px;
-	color: black;
 }
 
 .menu div a {
@@ -138,6 +138,17 @@ header {
 	padding: 9px 28px 9px 23px;
 	border-left: 5px solid white;
 
+}
+
+ @keyframes translate {
+    50% { transform: translateX(30px); }
+    100% { transform: translateX(0); }
+}
+
+.menu div a:hover {
+	border-left: solid rgb(128,128,128) 5px;
+	color: black;
+	animation: translate 1s infinite linear;
 }
 
 .submenu {
@@ -151,7 +162,10 @@ header {
 	max-width: 100%; 
 	display: flex;
 	flex-direction: column;
-	flex: 1 0 auto;
+	box-sizing: border-box;
+	height: 100%;
+	flex-basis: 790px;
+	padding-bottom: 77px;
 }
 
 .content h1 {
@@ -179,8 +193,7 @@ header {
 	height: 40px;
 	border: solid 1px #d6d9e1;
 	border-radius: 5px;
-	background: url('http://fe.it-academy.by/Sites/0013145/images/search.png') no-repeat 260px 9px;
-	background-color: white;
+	background: white url('http://fe.it-academy.by/Sites/0013145/images/search.png') no-repeat 260px 9px;
 }
 
 .search-set {
@@ -270,9 +283,20 @@ p {
 .buttons a {
 	text-decoration: none;
 	color: black;
+	display: inline-block;
 	border: solid 1px #99a1b3;
 	border-radius: 4px;
-	padding: 10px 15px;
+	width: 100px;
+	height: 24px;
+	padding: 10px 0 0;
+}
+
+.buttons a:hover {
+	transform: scale(1.3); 
+	background-color: white; 
+	transition: .5s;
+	color: rgb(79,156,212);
+	box-shadow: 0 0 2px rgba(0,0,0,0.1);
 }
 
 .buttons a:first-child {
@@ -295,7 +319,7 @@ p {
 .navigation li {
 	padding: 10px 10px;
 	list-style-type: none;
-	margin: 0px;
+	margin: 0;
 }
 
 .navigation a {
@@ -321,12 +345,14 @@ p {
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
 	min-height: 100%;
+	flex-basis: 790px;
 }
+
 footer {
 	max-width: 100%;
+	height: 77px;
+	margin-top: -77px;
 }
 
 .dws-menu *{

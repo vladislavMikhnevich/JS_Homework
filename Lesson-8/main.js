@@ -1,5 +1,6 @@
 function Animal(name) {
     var foodAmount = 50;
+    var self = this;
 
     function formatFoodAmount() {
         return foodAmount + 'гр.';
@@ -17,27 +18,25 @@ function Animal(name) {
 
     this.name = name;
 
-    this.animalFeed = function() {
-        return 'Насыпаем в миску ' + this.dailyNorm() + ' корма.';
+    this.Feed = function() {
+        return 'Насыпаем в миску ' + self.dailyNorm() + ' корма.';
     };
 }
 
 function Cat(name) {
-
     Animal.apply(this, arguments);
 
-    var feed = this.animalFeed;
+    var animalFeed = this.Feed;
+    var self = this;
 
-    this.stroke = function() {
-
-        console.log('Гладим кота');
-        return this;
+    this.Feed = function() {
+        console.log(animalFeed() + '\nКот Доволен ^_^');
+        return self;
     };
 
-    this.animalFeed = function() {
-
-        console.log(feed.call(this) + '\nКот Доволен ^_^');
-        return this;
+    this.stroke = function() {
+        console.log('Гладим кота');
+        return self;
     };
 }
 
@@ -49,4 +48,4 @@ console.log(barsik.dailyNorm());
 console.log(barsik.dailyNorm(40));
 console.log(barsik.dailyNorm(550));
 
-console.log(barsik.animalFeed().stroke().animalFeed());
+console.log(barsik.Feed().stroke().Feed().stroke());
