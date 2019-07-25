@@ -1,0 +1,17 @@
+table {
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+td {
+    text-align: center;
+    width: 180px;
+    height: 75px;
+    border: black 1px solid;
+    border-collapse: collapse;
+}
+
+.newTr {
+    text-align: center;
+    font-size: 25px;
+}
