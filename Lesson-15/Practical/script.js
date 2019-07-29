@@ -9,26 +9,25 @@ container.appendChild(firstPar);
 container.appendChild(secondPar);
 
 var button = document.body.getElementsByTagName('button')[0];
-linkPar1 = firstPar.children;
-linkPar2 = secondPar.children;
+    linkPar1 = firstPar.children;
 
-button.onclick = function (event) {
+button.onclick = function () {
     for (var i = 0; i < linkPar1.length; i++) {
         linkPar1[i].classList.add('red');
     }
 };
 
 container.onclick = function (event) {
-    for (var i = 0; i < linkPar2.length; i++) {
-        if (linkPar2[i] === event.target) {
-            event.preventDefault();
+    if (event.target.tagName === 'A' && event.target.parentElement === secondPar) {
+        event.preventDefault();
 
-            if (localStorage.getItem(event.target.innerHTML)) {
-                return alert(localStorage.getItem(event.target.innerHTML));
-            } else {
-                localStorage.setItem(event.target.innerHTML, 'path: ' + event.target.href + '\'');
-                alert('Ссылка добавлена в хранилище');
-            }
+        if (localStorage.getItem(event.target.innerHTML)) {
+            return alert(JSON.parse(localStorage.getItem(event.target.innerHTML)).path);
+        }
+
+        else {
+            localStorage.setItem(event.target.innerHTML, JSON.stringify({path: event.target.href}));
+            alert('Ссылка добавлена в хранилище');
         }
     }
 };
@@ -36,4 +35,3 @@ container.onclick = function (event) {
 window.onload = function () {
     localStorage.clear();
 };
-
